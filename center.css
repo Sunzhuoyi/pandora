@@ -1,0 +1,61 @@
+.parent{
+    height: 500px;
+    background-color: darkcyan;
+}
+.child{
+    height: 200px;
+    background-color: cornflowerblue;
+}
+
+.partentOne{
+    height: 500px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.childOne{
+    vertical-align: middle;
+}
+.partentTwo{
+    position: relative;
+
+}
+.childTwo{
+    margin-top: 90px;
+    transform:translateY(-50%);
+    position: absolute;
+    top: 50%;
+}
+
+.partentThree{
+    display: flex;
+    align-items: center;
+}
+/*给子元素设置定位absolute或者fixed，然后top为0，bottom为0，元素要设置高度*/
+.childFour{
+    height: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+/*
+绝对定位和负边距
+*/
+.parentFive{
+   position: relative;
+}
+.childFive{
+    position: absolute;
+    top:50%;
+    margin-top:-100px;
+}
+@keyframes mymove {
+    from{transform: translateX(10px)}
+    to{transform: translateX(40px)}
+}
+
+.animation{
+    width: 20px;
+    height: 20px;
+    animation: mymove 5s infinite;
+}
