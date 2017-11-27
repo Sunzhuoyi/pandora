@@ -49,6 +49,7 @@
     top:50%;
     margin-top:-100px;
 }
+/*动画*/
 @keyframes mymove {
     from{transform: translateX(10px)}
     to{transform: translateX(40px)}
@@ -58,4 +59,10 @@
     width: 20px;
     height: 20px;
     animation: mymove 5s infinite;
+}
+/*
+浮动*/
+
+.parentClear{
+    overflow: hidden;
 }
