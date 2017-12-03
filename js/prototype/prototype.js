@@ -6,12 +6,12 @@ var anotherObject = {
 var myObject = Object.create(anotherObject);
 console.log(myObject);
 
-/*使用for...in遍历对象时原理和查找[[prototype]]链类型类似，任何可以通过原型链访问到的（并且是enumerable,可枚举的）属性都会被枚举*/
+/!*使用for...in遍历对象时原理和查找[[prototype]]链类型类似，任何可以通过原型链访问到的（并且是enumerable,可枚举的）属性都会被枚举*!/
 
 for (var k in myObject) {
   console.log("found:" + k);
-}
-/*使用in 操作符来检查属性在对象中是否存在时，同样会查找对象的整条原型链，无论属性是否可枚举*/
+};
+/!*使用in 操作符来检查属性在对象中是否存在时，同样会查找对象的整条原型链，无论属性是否可枚举*!/
 
 console.log("a" in myObject);
 
@@ -33,8 +33,9 @@ Object.defineProperty(myObjectThree,'a',{value:8});
 console.log('defineProperty',myObjectThree);
 
 
-/*
-构造函数*/
+/!*
+构造函数*!/
+
 function Foo() {
 
 }
@@ -52,21 +53,43 @@ console.log(4,a.constructor === Foo);
 function Bar() {
 
 }
-/*
+/!*
  Es6之前需要抛弃默认的Bar.prototype
-*/
+*!/
 
 Bar.prototype = Object.create(Foo.prototype);
 
-/*
+/!*
 Es6之后可以直接修改现有的Bar.prototype
-*/
+*!/
 Object.setPrototypeOf(Bar.prototype,Foo.prototype);
 
 
-/*
-检查类关系*/
+/!*
+检查类关系*!/
 
-a instanceof Foo; //true
-Foo.prototype.isPrototypeOf(a);//true
+/*a instanceof Foo; //true
+Foo.prototype.isPrototypeOf(a);//true*/
+
+
+var setObject = {
+  set  c(value) {
+    this.a = value + 20;
+  },
+  get  b() {
+    return   this.a + 3;
+  },
+  a : 2
+};
+var myObjectSet = Object.create(setObject);
+myObjectSet.a = 7;
+console.log('myObjectSet.a = 7');
+console.log('setObject',setObject);
+console.log('setObject.a',setObject.a);
+console.log('myObjectSet',myObjectSet);
+console.log('myObjectSet.a',myObjectSet.a);
+myObjectSet.c = 7;
+console.log('myObjectSet.c = 7');
+console.log('myObjectSet',myObjectSet);
+console.log('myObjectSet.a',myObjectSet.a);
 
